@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Endoria Network | Profesyonel Minecraft Deneyimi</title>
-    <!-- Modern Fontlar ve İkonlar -->
+    <title>Endoria Network | Aternos Minecraft Sunucusu</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -81,12 +80,19 @@
             animation: fadeInUp 1s ease-out 0.5s both;
         }
 
-        /* IP Kopyalama Butonu */
-        .btn-play {
-            background: linear-gradient(45deg, #eab308, #ca8a04);
-            color: #111;
-            padding: 15px 40px;
-            font-size: 1.2rem;
+        /* Buton Grubu */
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        /* Ortak Buton Tasarımı */
+        .btn {
+            padding: 15px 35px;
+            font-size: 1.1rem;
             font-weight: 600;
             border: none;
             border-radius: 30px;
@@ -94,16 +100,35 @@
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             align-items: center;
-            gap: 10px;
-            animation: fadeInUp 1s ease-out 0.8s both;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+        }
+
+        /* IP Butonu */
+        .btn-play {
+            background: linear-gradient(45deg, #eab308, #ca8a04);
+            color: #111;
         }
 
         .btn-play:hover {
-            transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(234, 179, 8, 0.4);
         }
 
-        /* Özellikler Alanı (Aşağı Kaydırınca Gelen Yer) */
+        /* Discord Butonu */
+        .btn-discord {
+            background: #5865F2; /* Orijinal Discord Mavisi */
+            color: #fff;
+        }
+
+        .btn-discord:hover {
+            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.4);
+        }
+
+        /* Özellikler Alanı */
         .features {
             padding: 100px 20px;
             text-align: center;
@@ -133,8 +158,8 @@
             width: 300px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: transform 0.3s, background 0.3s;
-            opacity: 0; /* JS ile görünür olacak */
-            transform: translateY(50px); /* JS ile yukarı kayacak */
+            opacity: 0; 
+            transform: translateY(50px);
         }
 
         .card.show {
@@ -145,12 +170,12 @@
 
         .card:hover {
             transform: translateY(-10px);
-            background: #2dd4bf; /* Hoverda hafif turkuaz parlama */
-            color: #0f172a;
-            box-shadow: 0 10px 30px rgba(45, 212, 191, 0.2);
+            background: #3b82f6; /* Hoverda Endoria Mavisi parlama */
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
         }
 
-        .card:hover i, .card:hover p, .card:hover h3 { color: #0f172a; }
+        .card:hover i, .card:hover p, .card:hover h3 { color: #fff; }
 
         .card i {
             font-size: 3rem;
@@ -184,29 +209,34 @@
 </head>
 <body>
 
-    <!-- Üst Menü -->
     <nav>
         <div class="logo">Endoria<span>Network</span></div>
     </nav>
 
-    <!-- Ana Ekran -->
     <section class="hero">
         <h1>Maceraya Hazır Mısın?</h1>
         <p>Gecikmesiz, yenilikçi sistemler ve kaliteli bir oyuncu topluluğu ile Minecraft deneyimini zirvede yaşa.</p>
-        <button class="btn-play" onclick="copyIP()">
-            <i class="fa-solid fa-gamepad"></i>
-            <span id="ip-text">play.endorianetwork.com</span>
-        </button>
+        
+        <div class="btn-container">
+            <button class="btn btn-play" onclick="copyIP()">
+                <i class="fa-solid fa-gamepad"></i>
+                <span id="ip-text">EndoriaNetwork.aternos.me</span>
+            </button>
+
+            <a href="https://discord.gg/DqzSRTz5k" target="_blank" class="btn btn-discord">
+                <i class="fa-brands fa-discord"></i>
+                <span>Discord Sunucumuz</span>
+            </a>
+        </div>
     </section>
 
-    <!-- Aşağı Kaydırılabilir Özellikler Kısmı -->
     <section class="features">
         <h2 class="section-title">Neden <span>Bizi</span> Seçmelisin?</h2>
         <div class="cards-container">
             <div class="card">
-                <i class="fa-solid fa-server"></i>
-                <h3>Sıfır Gecikme</h3>
-                <p>Güçlü altyapımız sayesinde lag sorunu olmadan, akıcı bir şekilde oyunun tadını çıkar.</p>
+                <i class="fa-solid Server fa-server"></i>
+                <h3>Kesintisiz Eğlence</h3>
+                <p>Aternos altyapımızla desteklenen optimize edilmiş sistemlerle oyunun tadını çıkar.</p>
             </div>
             <div class="card">
                 <i class="fa-solid fa-shield-halved"></i>
@@ -215,29 +245,56 @@
             </div>
             <div class="card">
                 <i class="fa-solid fa-users"></i>
-                <h3>Harika Topluluk</h3>
-                <p>Toksiklikten uzak, yardımlaşmayı seven oyuncularla yeni arkadaşlıklar kur.</p>
+                <h3>Aktif Discord</h3>
+                <p>Discord sunucumuza katılarak çekilişlerden, güncellemelerden haberdar ol ve ekiple tanış.</p>
             </div>
         </div>
     </section>
 
-    <!-- Alt Kısım -->
     <footer>
         <p>&copy; 2026 Endoria Network. Tüm hakları saklıdır.</p>
     </footer>
 
-    <!-- İşlevsel Scriptler -->
     <script>
-        // IP Kopyalama Sistemi
+        // Kesin Çözümlü IP Kopyalama Sistemi
         function copyIP() {
-            const ip = "play.endorianetwork.com"; // BURAYA KENDİ IP ADRESİNİ YAZ
-            navigator.clipboard.writeText(ip);
+            const ip = "EndoriaNetwork.aternos.me";
             
+            // Modern kopyalama yöntemi
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(ip).then(() => {
+                    showSuccess();
+                }).catch(() => {
+                    fallbackCopy(ip); // Hata olursa eski yönteme geç
+                });
+            } else {
+                fallbackCopy(ip); // Güvensiz bağlantı/eski tarayıcılar için
+            }
+        }
+
+        // Kopyalama Hatası Almamak İçin Güvenli Alternatif Yöntem
+        function fallbackCopy(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed"; 
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showSuccess();
+            } catch (err) {
+                console.error('Kopyalama başarısız oldu', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // Başarılı Yazısı Gösterme Fonksiyonu
+        function showSuccess() {
             const textElement = document.getElementById("ip-text");
             textElement.innerText = "IP Kopyalandı!";
-            
             setTimeout(() => {
-                textElement.innerText = ip;
+                textElement.innerText = "EndoriaNetwork.aternos.me";
             }, 2000);
         }
 
@@ -255,5 +312,5 @@
     </script>
 
 </body>
-            </html>
-            
+    </html>
+                    
