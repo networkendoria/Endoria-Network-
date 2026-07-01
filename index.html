@@ -3,262 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Endoria Asistan</title>
+    <title>Endoria Network | Profesyonel Minecraft Deneyimi</title>
+    <!-- Modern Fontlar ve İkonlar -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Genel Ayarlar */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
+
         body {
-            background-color: #0d0b14;
-            color: #e0e0e0;
+            background-color: #0f172a; /* Derin gece mavisi/siyah arka plan */
+            color: #f8fafc;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Kaydırma Çubuğu Özelleştirme */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 5px; }
+
+        /* Üst Menü (Navbar) */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #eab308; /* Altın sarısı */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span { color: #3b82f6; } /* Mavi vurgu */
+
+        /* Ana Giriş Alanı (Hero Section) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            padding: 12px;
-            overflow: hidden;
-        }
-        .chat-container {
-            width: 100%;
-            max-width: 440px;
-            height: 100%;
-            max-height: 94vh;
-            background-color: #161224;
-            border: 2px solid #5d3fd3;
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
-        }
-        .chat-header {
-            background: linear-gradient(135deg, #1c0a24, #5d3fd3);
-            padding: 18px;
             text-align: center;
-            font-weight: bold;
-            font-size: 1.25rem;
-            letter-spacing: 2px;
-            color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-            border-bottom: 2px solid #5d3fd3;
-            flex-shrink: 0;
-        }
-        .chat-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            background-color: #110d1d;
-        }
-        .message {
-            max-width: 85%;
-            padding: 12px 16px;
-            border-radius: 14px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-        .message.assistant {
-            background-color: #231c38;
-            border: 1px solid #5d3fd3;
-            color: #e0dcf0;
-            align-self: flex-start;
-            border-top-left-radius: 2px;
-        }
-        .message.user {
-            background-color: #ea9999; 
-            color: #1c0a24;
-            align-self: flex-end;
-            border-top-right-radius: 2px;
-            font-weight: 500;
-        }
-        /* Asistan mesajındaki kalın yazılar için parlak beyaz */
-        .message b {
-            color: #ffffff;
-            font-weight: 600;
-        }
-        .quick-questions-title {
-            font-size: 0.8rem;
-            color: #8c7ae6;
-            padding: 8px 15px 4px 15px;
-            font-weight: bold;
-            text-transform: uppercase;
-            background-color: #110d1d;
-            flex-shrink: 0;
-        }
-        .quick-questions-area {
-            display: flex;
-            gap: 8px;
-            padding: 4px 15px 12px 15px;
-            overflow-x: auto;
-            background-color: #110d1d;
-            border-bottom: 1px solid #231c38;
-            flex-shrink: 0;
-        }
-        .quick-questions-area::-webkit-scrollbar {
-            height: 0px;
-        }
-        .suggest-chip {
-            background-color: #231c38;
-            color: #efeded;
-            border: 1px solid #5d3fd3;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-        .suggest-chip:hover {
-            background-color: #5d3fd3;
-            color: white;
-        }
-        .chat-input-area {
-            padding: 14px;
-            background-color: #161224;
-            border-top: 1px solid #2d2547;
-            display: flex;
-            gap: 10px;
-            flex-shrink: 0;
-        }
-        .chat-input {
-            flex: 1;
-            background-color: #231c38;
-            border: 1px solid #42366f;
-            border-radius: 8px;
-            padding: 12px;
-            color: #ffffff;
-            font-size: 0.95rem;
-            outline: none;
-        }
-        .chat-input:focus {
-            border-color: #5d3fd3;
-        }
-        .send-btn {
-            background-color: #ea9999;
-            color: #1c0a24;
-            border: none;
-            border-radius: 8px;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
             padding: 0 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        /* IP Kopyalama Butonu */
+        .btn-play {
+            background: linear-gradient(45deg, #eab308, #ca8a04);
+            color: #111;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
             cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeInUp 1s ease-out 0.8s both;
         }
-        ::-webkit-scrollbar {
-            width: 4px;
+
+        .btn-play:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(234, 179, 8, 0.4);
         }
-        ::-webkit-scrollbar-track {
-            background: #110d1d;
+
+        /* Özellikler Alanı (Aşağı Kaydırınca Gelen Yer) */
+        .features {
+            padding: 100px 20px;
+            text-align: center;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #42366f;
-            border-radius: 3px;
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #f8fafc;
+        }
+
+        .section-title span { color: #eab308; }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 40px 30px;
+            border-radius: 20px;
+            width: 300px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, background 0.3s;
+            opacity: 0; /* JS ile görünür olacak */
+            transform: translateY(50px); /* JS ile yukarı kayacak */
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease-out;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: #2dd4bf; /* Hoverda hafif turkuaz parlama */
+            color: #0f172a;
+            box-shadow: 0 10px 30px rgba(45, 212, 191, 0.2);
+        }
+
+        .card:hover i, .card:hover p, .card:hover h3 { color: #0f172a; }
+
+        .card i {
+            font-size: 3rem;
+            color: #3b82f6;
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .card p { color: #94a3b8; font-size: 0.95rem; }
+
+        /* Footer */
+        footer {
+            background: #0b1121;
+            padding: 30px;
+            text-align: center;
+            color: #64748b;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Animasyonlar */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-<div class="chat-container">
-    <div class="chat-header">
-        ENDORİA ASİSTAN
-    </div>
+    <!-- Üst Menü -->
+    <nav>
+        <div class="logo">Endoria<span>Network</span></div>
+    </nav>
 
-    <div class="chat-messages" id="chatMessages">
-        <div class="message assistant">Endoria Network Rehber Sistemine hoş geldin!<br><br>Aşağıdaki butonları kullanarak veya merak ettiğin kelimeleri yazarak sunucumuz hakkında anında bilgi alabilirsin.</div>
-    </div>
+    <!-- Ana Ekran -->
+    <section class="hero">
+        <h1>Maceraya Hazır Mısın?</h1>
+        <p>Gecikmesiz, yenilikçi sistemler ve kaliteli bir oyuncu topluluğu ile Minecraft deneyimini zirvede yaşa.</p>
+        <button class="btn-play" onclick="copyIP()">
+            <i class="fa-solid fa-gamepad"></i>
+            <span id="ip-text">play.endorianetwork.com</span>
+        </button>
+    </section>
 
-    <div class="quick-questions-title">Hızlı Menü</div>
-    <div class="quick-questions-area">
-        <div class="suggest-chip" onclick="askQuick('🌐 Sunucu IP ve Sürüm bilgisi nedir?')">🌐 IP & Sürüm</div>
-        <div class="suggest-chip" onclick="askQuick('💰 Nasıl para kasabilirim?')">💰 Para Kasma</div>
-        <div class="suggest-chip" onclick="askQuick('📞 Destek ve İletişim kanalları nelerdir?')">📞 İletişim & Destek</div>
-        <div class="suggest-chip" onclick="askQuick('👑 Nasıl yetkili olabilirim?')">👑 Yetkili Alımı</div>
-        <div class="suggest-chip" onclick="askQuick('💎 VIP üyelik özellikleri nelerdir?')">💎 VIP Bilgilendirme</div>
-    </div>
+    <!-- Aşağı Kaydırılabilir Özellikler Kısmı -->
+    <section class="features">
+        <h2 class="section-title">Neden <span>Bizi</span> Seçmelisin?</h2>
+        <div class="cards-container">
+            <div class="card">
+                <i class="fa-solid fa-server"></i>
+                <h3>Sıfır Gecikme</h3>
+                <p>Güçlü altyapımız sayesinde lag sorunu olmadan, akıcı bir şekilde oyunun tadını çıkar.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Adil Oyun</h3>
+                <p>Gelişmiş hile koruması ve aktif yetkili ekibimizle herkese eşit ve adil bir ortam sunuyoruz.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-users"></i>
+                <h3>Harika Topluluk</h3>
+                <p>Toksiklikten uzak, yardımlaşmayı seven oyuncularla yeni arkadaşlıklar kur.</p>
+            </div>
+        </div>
+    </section>
 
-    <form class="chat-input-area" id="chatForm">
-        <input type="text" class="chat-input" id="chatInput" placeholder="Sorunu buraya yazın..." autocomplete="off" required>
-        <button type="submit" class="send-btn">GÖNDER</button>
-    </form>
-</div>
+    <!-- Alt Kısım -->
+    <footer>
+        <p>&copy; 2026 Endoria Network. Tüm hakları saklıdır.</p>
+    </footer>
 
-<script>
-    const chatForm = document.getElementById('chatForm');
-    const chatInput = document.getElementById('chatInput');
-    const chatMessages = document.getElementById('chatMessages');
-
-    // GERÇEK HTML İLE YENİLENMİŞ VERİ TABANI
-    const botDatabase = {
-        ip: "🌐 <b>SUNUCU GİRİŞ BİLGİLERİ</b><br><br><b>IP Adresi:</b> EndoriaNetwork.aternos.me<br><b>Sürüm:</b> 1.21.11 (Ana Sürüm)<br><br>Tüm 1.21 tabanlı sürümlerle sorunsuz bir şekilde giriş sağlayarak maceraya katılabilirsiniz.",
-        
-        para: "💰 <b>EKONOMİ VE PARA KASMA</b><br><br>Sunucumuzda ekonomi sağlamak için <b>/meslekler</b> komutunu kullanabilirsiniz. Kendinize uygun bir meslek seçip çalışarak oyun içi para kazanmaya hemen başlayabilirsiniz.",
-        
-        iletisim: "📞 <b>İLETİŞİM VE DESTEK HİZMETLERİ</b><br><br>Her türlü sorun, bildirim veya bilgi edinme talepleriniz için bizimle şu kanallar üzerinden iletişime geçebilirsiniz:<br><br>1. <b>Discord:</b> Sunucumuza katılarak Destek Talebi (Ticket) açabilir ve ekibimize doğrudan ulaşabilirsiniz.<br>2. <b>Instagram:</b> Resmi işleyiş ve duyurular için @endorianetwork ve @zyven_officall hesapları üzerinden destek alabilirsiniz.",
-        
-        yetkili: "👑 <b>YETKİLİ BAŞVURU SÜRECİ</b><br><br>Ekibimize katılmak ve sunucu yönetiminde rol almak için Discord sunucumuzda bulunan başvuru formlarını eksiksiz doldurmanız gerekmektedir. Oyundaki aktifliğiniz ve adil tutumunuz şansınızı doğrudan artıracaktır.",
-        
-        vip: "💎 <b>VIP ÜYELİK SİSTEMİ</b><br><br>VIP paketlerimiz ve üyelik avantajlarımız şu anda güncellenmektedir. Çok yakında tüm paket detayları, fiyatlar ve özel ayrıcalıklar hakkında burada kapsamlı bir bilgilendirme yer alacaktır.<br><br>Göstermiş olduğunuz sabır ve ilgi için teşekkür ederiz."
-    };
-
-    chatForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const text = chatInput.value.trim();
-        if (!text) return;
-
-        processUserMessage(text);
-        chatInput.value = '';
-    });
-
-    function askQuick(questionText) {
-        processUserMessage(questionText);
-    }
-
-    function processUserMessage(text) {
-        addMessage(text, 'user');
-        const lowerText = text.toLowerCase();
-        let reply = "";
-
-        // Akıllı Kelime Eşleştirme Sistemi (Sıralama Hatası Giderildi!)
-        if (lowerText.includes("vip") || lowerText.includes("üyelik") || lowerText.includes("satın al")) {
-            reply = botDatabase.vip; // Önce VIP'yi kontrol et
-        } else if (lowerText.includes("ip") || lowerText.includes("adres") || lowerText.includes("sürüm") || lowerText.includes("surum") || lowerText.includes("giriş")) {
-            reply = botDatabase.ip; // Sonra IP'yi kontrol et
-        } else if (lowerText.includes("para") || lowerText.includes("kas") || lowerText.includes("meslek") || lowerText.includes("ekonomi")) {
-            reply = botDatabase.para;
-        } else if (lowerText.includes("iletişim") || lowerText.includes("iletisim") || lowerText.includes("destek") || lowerText.includes("instagram") || lowerText.includes("discord") || lowerText.includes("ticket")) {
-            reply = botDatabase.iletisim;
-        } else if (lowerText.includes("yetkili") || lowerText.includes("alım") || lowerText.includes("alim") || lowerText.includes("başvuru") || lowerText.includes("mod")) {
-            reply = botDatabase.yetkili;
-        } else {
-            reply = "🤔 Aradığınız konuyu tam olarak anlayamadım.<br><br>Lütfen alt kısımda yer alan hazır menü butonlarını kullanın veya sorunuzun içerisinde <b>ip, para, meslek, destek, yetkili, vip</b> gibi anahtar kelimeler bulundurarak tekrar yazmayı deneyin.";
+    <!-- İşlevsel Scriptler -->
+    <script>
+        // IP Kopyalama Sistemi
+        function copyIP() {
+            const ip = "play.endorianetwork.com"; // BURAYA KENDİ IP ADRESİNİ YAZ
+            navigator.clipboard.writeText(ip);
+            
+            const textElement = document.getElementById("ip-text");
+            textElement.innerText = "IP Kopyalandı!";
+            
+            setTimeout(() => {
+                textElement.innerText = ip;
+            }, 2000);
         }
 
-        setTimeout(() => {
-            addMessage(reply, 'assistant');
-        }, 350);
-    }
+        // Aşağı Kaydırdıkça Kutuların Çıkma Animasyonu (Scroll Reveal)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
 
-    function addMessage(text, sender) {
-        const msgDiv = document.createElement('div');
-        msgDiv.classList.add('message', sender);
-        
-        // Yıldız işaretleri yerine HTML etiketlerini düzgünce render et
-        if (sender === 'assistant') {
-            msgDiv.innerHTML = text; 
-        } else {
-            msgDiv.innerText = text;
-        }
-        
-        chatMessages.appendChild(msgDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-</script>
+        const hiddenElements = document.querySelectorAll('.card');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
 
 </body>
-</html>
+            </html>
+            
