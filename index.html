@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Endoria Network | End'in Hükümdarı</title>
-    <!-- Modern Fontlar ve İkonlar -->
+    <title>Endoria Network | Gerçek Minecraft Deneyimi</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Genel Ayarlar */
         * {
             margin: 0;
             padding: 0;
@@ -17,47 +15,40 @@
         }
 
         body {
-            /* 1000003137.png arka planı ve üzerine mor/siyah degrade (karartma) filtresi */
-            background: linear-gradient(rgba(18, 5, 30, 0.85), rgba(10, 2, 20, 0.95)), url('1000003137.png') no-repeat center center fixed;
+            /* 1000003137.png arka planı, karartma filtresi ile */
+            background: linear-gradient(rgba(15, 10, 20, 0.9), rgba(10, 5, 15, 0.95)), url('1000003137.png') no-repeat center center fixed;
             background-size: cover;
             color: #f8fafc;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* Kaydırma Çubuğu (Mor Tema) */
-        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0f0518; }
-        ::-webkit-scrollbar-thumb { background: #a855f7; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 4px; }
 
-        /* Üst Menü (Navbar) */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 50px;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            background: rgba(18, 5, 30, 0.7);
-            backdrop-filter: blur(15px);
+            background: rgba(10, 5, 15, 0.8);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
         }
 
-        /* Endoria Network Renk Geçişli Logo */
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(90deg, #d946ef, #a855f7, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 3s infinite alternate;
+            letter-spacing: 2px;
+            color: #c4b5fd;
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
         }
 
-        /* Ana Giriş Alanı (Hero Section) */
         .hero {
             height: 100vh;
             display: flex;
@@ -69,247 +60,186 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #fff;
-            text-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
-            animation: fadeInDown 1s ease-out;
+            text-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: #d8b4fe;
+            font-size: 1.1rem;
+            color: #a78bfa;
             max-width: 600px;
             margin-bottom: 40px;
-            animation: fadeInUp 1s ease-out 0.5s both;
         }
 
-        /* Buton Grubu */
         .btn-container {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
-            animation: fadeInUp 1s ease-out 0.8s both;
         }
 
         .btn {
-            padding: 15px 35px;
-            font-size: 1.1rem;
+            padding: 15px 30px;
+            font-size: 1rem;
             font-weight: 600;
             border: none;
-            border-radius: 30px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
         }
 
-        /* Mor IP Butonu */
         .btn-play {
-            background: linear-gradient(45deg, #a855f7, #d946ef);
+            background: #8b5cf6;
             color: #fff;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
         }
 
         .btn-play:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.7);
+            background: #7c3aed;
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
         }
 
         .btn-discord {
             background: #5865F2;
             color: #fff;
         }
+
         .btn-discord:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.5);
+            background: #4752c4;
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
         }
 
-        /* Ortak Bölüm Ayarları */
         .section-container {
             padding: 80px 20px;
             text-align: center;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 40px;
-            color: #f8fafc;
+            color: #fff;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .section-title span { 
-            background: linear-gradient(90deg, #d946ef, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .section-title span { color: #a78bfa; }
 
-        /* Bilgi Mesajı (Satın Alımlar İçin) */
         .info-alert {
-            background: rgba(168, 85, 247, 0.15);
-            border: 1px solid rgba(168, 85, 247, 0.4);
-            border-left: 5px solid #d946ef;
-            color: #e9d5ff;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto 50px auto;
-            border-radius: 10px;
-            font-size: 1.1rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-left: 4px solid #8b5cf6;
+            color: #ddd6fe;
+            padding: 15px 20px;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            border-radius: 6px;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 15px;
             text-align: left;
         }
 
-        .info-alert i {
-            font-size: 2rem;
-            color: #d946ef;
-        }
+        .info-alert i { font-size: 1.5rem; color: #8b5cf6; }
 
-        /* Kart Konteynerleri */
         .cards-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 25px;
-            max-width: 1200px;
+            gap: 20px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        /* Mağaza & Kurucu Kartları */
         .card {
-            background: rgba(20, 10, 35, 0.7);
-            padding: 30px;
-            border-radius: 15px;
-            width: 280px;
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            opacity: 0; 
-            transform: translateY(40px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card.show {
-            opacity: 1;
-            transform: translateY(0);
+            background: rgba(15, 10, 20, 0.6);
+            padding: 30px 20px;
+            border-radius: 10px;
+            width: 260px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            border-color: #d946ef;
-            box-shadow: 0 10px 30px rgba(217, 70, 239, 0.2);
+            transform: translateY(-5px);
+            border-color: #8b5cf6;
         }
 
-        /* Mağaza Kartları Özel */
         .store-card i {
-            font-size: 2.5rem;
-            color: #a855f7;
+            font-size: 2rem;
+            color: #a78bfa;
             margin-bottom: 15px;
         }
         
-        .store-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: #fff; }
-        .store-card .price { 
-            font-size: 1.8rem; 
-            font-weight: 800; 
-            color: #eab308; /* Fiyatlar dikkat çeksin diye altın sarısı */
-        }
+        .store-card h3 { font-size: 1.2rem; margin-bottom: 10px; color: #f8fafc; }
+        .store-card .price { font-size: 1.5rem; font-weight: 800; color: #fbbf24; }
 
-        /* Kadim Kasa Özel Tasarımı */
         .card.kadim {
-            background: linear-gradient(135deg, rgba(40, 10, 60, 0.9), rgba(20, 5, 30, 0.9));
-            border: 2px solid #eab308;
-            box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+            border: 1px solid #fbbf24;
+            background: rgba(30, 20, 10, 0.6);
         }
-        .card.kadim:hover {
-            box-shadow: 0 0 30px rgba(234, 179, 8, 0.6);
-            border-color: #fde047;
-        }
-        .card.kadim i { color: #eab308; }
-        .card.kadim h3 { color: #fde047; }
-        .kadim-badge {
-            position: absolute;
-            top: 15px;
-            right: -35px;
-            background: #eab308;
-            color: #000;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 5px 40px;
-            transform: rotate(45deg);
-        }
+        .card.kadim:hover { box-shadow: 0 0 15px rgba(251, 191, 36, 0.2); }
+        .card.kadim i, .card.kadim h3 { color: #fbbf24; }
 
-        /* Kurucu Kartları Özel */
-        .founder-card {
-            border-top: 4px solid #a855f7;
-            width: 320px;
-        }
         .founder-card i {
-            font-size: 4rem;
-            color: #d8b4fe;
+            font-size: 3rem;
+            color: #a78bfa;
             margin-bottom: 15px;
         }
         .founder-card h3 {
-            font-size: 1.8rem;
-            background: linear-gradient(90deg, #d946ef, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.5rem;
+            color: #fff;
         }
         .founder-card .real-name {
             color: #94a3b8;
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 10px;
         }
         .founder-card .role {
             display: inline-block;
-            background: rgba(168, 85, 247, 0.2);
-            color: #d8b4fe;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
             font-weight: 600;
         }
 
-        /* Footer */
         footer {
-            background: rgba(10, 5, 20, 0.9);
-            padding: 30px;
+            background: rgba(5, 2, 10, 0.9);
+            padding: 20px;
             text-align: center;
             color: #64748b;
-            border-top: 1px solid rgba(168, 85, 247, 0.1);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.1);
         }
 
-        /* Animasyonlar */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 2px rgba(217, 70, 239, 0.4)); }
-            to { filter: drop-shadow(0 0 10px rgba(217, 70, 239, 0.8)); }
+        /* Telefonlar için Özel Düzenlemeler */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .btn { width: 100%; justify-content: center; }
+            .info-alert { flex-direction: column; text-align: center; }
+            .card { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Üst Menü -->
     <nav>
         <div class="logo">Endoria Network</div>
     </nav>
 
-    <!-- Ana Ekran -->
     <section class="hero">
-        <h1>End'in Hakimi Ol</h1>
-        <p>Aternos'un en profesyonel altyapısı, sıfır lag ve eşsiz sistemlerle maceraya atıl.</p>
+        <h1>Endoria Network</h1>
+        <p>Aternos altyapısında profesyonel, kesintisiz ve adil bir hayatta kalma deneyimi.</p>
         
         <div class="btn-container">
             <button class="btn btn-play" onclick="copyIP()">
@@ -323,91 +253,59 @@
         </div>
     </section>
 
-    <!-- Mağaza & Satın Alımlar Kısmı -->
     <section class="section-container" id="magaza">
         <h2 class="section-title">Mağaza & <span>Üyelikler</span></h2>
         
-        <!-- Ticket Uyarı Kutusu -->
         <div class="info-alert">
-            <i class="fa-solid fa-headset"></i>
+            <i class="fa-solid fa-circle-info"></i>
             <div>
-                <strong>Satın Alımlar Hakkında Önemli Bilgi:</strong> <br>
-                Satın alım işlemleri, VIP veya Kasa Anahtarı talepleri için Discord sunucumuz üzerinden <b>"Ticket" (Destek Talebi)</b> açarak doğrudan kurucularımızla iletişime geçebilirsiniz.
+                <strong>Satın Alımlar Hakkında:</strong> <br>
+                VIP veya Kasa Anahtarı satın almak için Discord sunucumuz üzerinden <b>Ticket (Destek Talebi)</b> açarak kurucularımızla iletişime geçebilirsiniz.
             </div>
         </div>
 
         <div class="cards-container">
-            <!-- VIP -->
             <div class="card store-card">
                 <i class="fa-solid fa-crown"></i>
                 <h3>VIP Üyelik</h3>
                 <p class="price">100 ₺</p>
             </div>
-            <!-- Kasalar -->
             <div class="card store-card">
-                <i class="fa-solid fa-box"></i>
-                <h3>Yaygın Kasa</h3>
-                <p class="price">50 ₺</p>
-            </div>
-            <div class="card store-card">
-                <i class="fa-solid fa-box-open"></i>
-                <h3>Nadir Kasa</h3>
-                <p class="price">100 ₺</p>
-            </div>
-            <div class="card store-card">
-                <i class="fa-solid fa-gem"></i>
-                <h3>Epik Kasa</h3>
+                <i class="fa-solid fa-star"></i>
+                <h3>Efso Kasa Anahtarı</h3>
                 <p class="price">150 ₺</p>
             </div>
-            <div class="card store-card">
-                <i class="fa-solid fa-fire"></i>
-                <h3>Efsanevi Kasa</h3>
-                <p class="price">200 ₺</p>
-            </div>
-            <div class="card store-card">
-                <i class="fa-solid fa-dragon"></i>
-                <h3>Mistik Kasa</h3>
-                <p class="price">250 ₺</p>
-            </div>
-            <!-- Kadim Kasa (Özel Tasarım) -->
             <div class="card store-card kadim">
-                <div class="kadim-badge">ÖZEL</div>
-                <i class="fa-solid fa-eye"></i>
+                <i class="fa-solid fa-dragon"></i>
                 <h3>Endoria Kadim Kasası</h3>
-                <p class="price">350 ₺</p>
+                <p class="price">250 ₺</p>
             </div>
         </div>
     </section>
 
-    <!-- Kurucular Kısmı -->
     <section class="section-container" id="kurucular">
         <h2 class="section-title">Yönetim <span>Ekibi</span></h2>
         <div class="cards-container">
-            <!-- Zeltron -->
             <div class="card founder-card">
-                <i class="fa-solid fa-user-ninja"></i>
+                <i class="fa-solid fa-shield-halved"></i>
                 <h3>Zeltron</h3>
-                <p class="real-name">(Recep)</p>
-                <p class="role">Kurucu</p>
+                <p class="real-name">Recep</p>
+                <p class="role">Sunucu Kurucusu</p>
             </div>
-            <!-- Zyven -->
             <div class="card founder-card">
-                <i class="fa-solid fa-user-astronaut"></i>
+                <i class="fa-solid fa-shield-halved"></i>
                 <h3>Zyven</h3>
-                <p class="real-name">(Oğuzhan)</p>
-                <p class="role">Kurucu</p>
+                <p class="real-name">Oğuzhan</p>
+                <p class="role">Sunucu Kurucusu</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Endoria Network. Tüm hakları saklıdır.</p>
+        <p>&copy; 2026 Endoria Network.</p>
     </footer>
 
-    <!-- İşlevsel Scriptler -->
     <script>
-        // Kesin Çözümlü IP Kopyalama Sistemi
         function copyIP() {
             const ip = "EndoriaNetwork.aternos.me";
             if (navigator.clipboard && window.isSecureContext) {
@@ -425,7 +323,7 @@
             textArea.focus();
             textArea.select();
             try { document.execCommand('copy'); showSuccess(); } 
-            catch (err) { console.error('Kopyalama başarısız', err); }
+            catch (err) { console.error('Hata:', err); }
             document.body.removeChild(textArea);
         }
         function showSuccess() {
@@ -433,20 +331,6 @@
             textElement.innerText = "IP Kopyalandı!";
             setTimeout(() => { textElement.innerText = "EndoriaNetwork.aternos.me"; }, 2000);
         }
-
-        // Aşağı Kaydırdıkça Kutuların Çıkma Animasyonu (Scroll Reveal)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        const hiddenElements = document.querySelectorAll('.card');
-        hiddenElements.forEach((el) => observer.observe(el));
     </script>
-
 </body>
-        </html>
-    
+</html>
