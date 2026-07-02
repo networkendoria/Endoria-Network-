@@ -27,7 +27,7 @@
         ::-webkit-scrollbar-track { background: #0f0518; }
         ::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 4px; }
 
-        /* YENİ ÜST MENÜ (NAV) TASARIMI */
+        /* ÜST MENÜ (NAV) TASARIMI */
         nav {
             position: fixed;
             top: 0;
@@ -139,8 +139,9 @@
         }
 
         .section-container {
-            padding: 80px 20px;
+            padding: 60px 20px;
             text-align: center;
+            scroll-margin-top: 90px;
         }
 
         .section-title {
@@ -158,9 +159,9 @@
             border: 1px solid rgba(139, 92, 246, 0.3);
             border-left: 4px solid #8b5cf6;
             color: #ddd6fe;
-            padding: 15px 20px;
+            padding: 20px;
             max-width: 700px;
-            margin: 0 auto 40px auto;
+            margin: 0 auto 20px auto; /* Aralarındaki boşluğu azalttım */
             border-radius: 6px;
             font-size: 1rem;
             display: flex;
@@ -169,7 +170,7 @@
             text-align: left;
         }
 
-        .info-alert i { font-size: 1.5rem; color: #8b5cf6; }
+        .info-alert i { font-size: 1.8rem; color: #8b5cf6; }
 
         /* Yetkili Alımı Özel Tasarımı */
         .hiring-alert {
@@ -179,7 +180,17 @@
             color: #fef3c7;
         }
         .hiring-alert i { color: #fbbf24; }
-        .hiring-alert strong { color: #fbbf24; font-size: 1.1rem; }
+        .hiring-alert strong { color: #fbbf24; font-size: 1.1rem; display: block; margin-bottom: 5px;}
+
+        /* Medya Alımı Özel Tasarımı */
+        .media-alert {
+            background: rgba(236, 72, 153, 0.1);
+            border-color: rgba(236, 72, 153, 0.3);
+            border-left-color: #ec4899;
+            color: #fce7f3;
+        }
+        .media-alert i { color: #ec4899; }
+        .media-alert strong { color: #ec4899; font-size: 1.1rem; display: block; margin-bottom: 5px;}
 
         .cards-container {
             display: flex;
@@ -250,7 +261,6 @@
             border-top: 1px solid rgba(139, 92, 246, 0.1);
         }
 
-        /* Telefonlar için Özel Düzenlemeler */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -273,12 +283,11 @@
 </head>
 <body>
 
-    <!-- YENİ EKLENEN MENÜ KISMI -->
     <nav>
         <div class="logo">Endoria</div>
         <ul class="nav-links">
             <li><a href="#anasayfa">Ana Sayfa</a></li>
-            <li><a href="#alimlar">Yetkili Alımı</a></li>
+            <li><a href="#alimlar">Alımlar</a></li>
             <li><a href="#magaza">Market</a></li>
             <li><a href="#kurucular">Yönetim</a></li>
         </ul>
@@ -300,21 +309,33 @@
         </div>
     </section>
 
-    <!-- YETKİLİ ALIMI BÖLÜMÜ -->
-    <section class="section-container" id="alimlar" style="padding-bottom: 20px; padding-top: 40px;">
+    <!-- ALIMLAR BÖLÜMÜ (YETKİLİ VE MEDYA) -->
+    <section class="section-container" id="alimlar">
+        <h2 class="section-title">Ekibimize <span>Katıl</span></h2>
+        
+        <!-- Yetkili Alımı -->
         <div class="info-alert hiring-alert">
             <i class="fa-solid fa-bullhorn"></i>
             <div>
-                <strong>Yetkili Alımları Açılmıştır!</strong> <br>
-                Sunucumuzda Rehber, Moderatör veya Mimar kadrosunda yer almak istiyorsan, Discord sunucumuza katılarak <b>yetkili alım</b> kanalından başvurunu yapabilirsin. Ekibimize katıl!
+                <strong>Yetkili Alımları Açık!</strong>
+                Sunucumuzda Rehber, Moderatör veya Admin kadrosunda yer almak istiyorsan, Discord sunucumuza katılarak <b>yetkili alım</b> kanalından başvurunu yapabilirsin.
+            </div>
+        </div>
+
+        <!-- Medya Alımı (Yeni Eklenen Kısım) -->
+        <div class="info-alert media-alert">
+            <i class="fa-solid fa-video"></i>
+            <div>
+                <strong>İçerik Üreticisi (Medya) Arıyoruz!</strong>
+                Endoria Network'ü kitlelere duyuracak yaratıcı yetenekler arıyoruz! Eğer düzenli ve modern içerikler (Video, Shorts, Yayın) çıkarabiliyorsan, sunucumuzda aktifsen ve yanında <b>en az 5 yeni oyuncu</b> getirebileceğine inanıyorsan, bu rol tam sana göre! Başvuru için Discord sunucumuza katıl.
             </div>
         </div>
     </section>
 
-    <section class="section-container" id="magaza" style="padding-top: 40px;">
+    <section class="section-container" id="magaza">
         <h2 class="section-title">Genel <span>Market</span></h2>
         
-        <div class="info-alert">
+        <div class="info-alert" style="margin-bottom: 40px;">
             <i class="fa-solid fa-circle-info"></i>
             <div>
                 <strong>Satın Alımlar Hakkında:</strong> <br>
@@ -323,7 +344,6 @@
         </div>
 
         <div class="cards-container">
-            <!-- YENİ FİYATLAR VE İSİM GÜNCELLEMESİ -->
             <div class="card store-card">
                 <i class="fa-solid fa-crown"></i>
                 <h3>VIP Üyelik</h3>
@@ -345,7 +365,6 @@
     <section class="section-container" id="kurucular">
         <h2 class="section-title">Yönetim <span>Ekibi</span></h2>
         <div class="cards-container">
-            <!-- GERÇEK İSİMLER KALDIRILDI -->
             <div class="card founder-card">
                 <i class="fa-solid fa-shield-halved"></i>
                 <h3>Zeltron</h3>
@@ -391,5 +410,5 @@
         }
     </script>
 </body>
-                </html>
-                
+    </html>
+                                                    
