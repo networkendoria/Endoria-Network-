@@ -27,13 +27,15 @@
         ::-webkit-scrollbar-track { background: #0f0518; }
         ::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 4px; }
 
+        /* YENİ ÜST MENÜ (NAV) TASARIMI */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px;
+            padding: 20px 50px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
             background: rgba(10, 5, 15, 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
@@ -47,6 +49,27 @@
             letter-spacing: 2px;
             color: #c4b5fd;
             text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: #a78bfa;
+            text-shadow: 0 0 8px rgba(167, 139, 250, 0.5);
         }
 
         .hero {
@@ -148,6 +171,16 @@
 
         .info-alert i { font-size: 1.5rem; color: #8b5cf6; }
 
+        /* Yetkili Alımı Özel Tasarımı */
+        .hiring-alert {
+            background: rgba(251, 191, 36, 0.1);
+            border-color: rgba(251, 191, 36, 0.3);
+            border-left-color: #fbbf24;
+            color: #fef3c7;
+        }
+        .hiring-alert i { color: #fbbf24; }
+        .hiring-alert strong { color: #fbbf24; font-size: 1.1rem; }
+
         .cards-container {
             display: flex;
             flex-wrap: wrap;
@@ -196,19 +229,15 @@
         .founder-card h3 {
             font-size: 1.5rem;
             color: #fff;
-        }
-        .founder-card .real-name {
-            color: #94a3b8;
-            font-size: 1rem;
             margin-bottom: 10px;
         }
         .founder-card .role {
             display: inline-block;
             background: rgba(139, 92, 246, 0.15);
             color: #c4b5fd;
-            padding: 4px 12px;
+            padding: 6px 15px;
             border-radius: 4px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
         }
 
@@ -223,7 +252,18 @@
 
         /* Telefonlar için Özel Düzenlemeler */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            nav {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links a { font-size: 0.85rem; }
+            .hero h1 { font-size: 2.5rem; margin-top: 60px; }
             .hero p { font-size: 1rem; }
             .btn { width: 100%; justify-content: center; }
             .info-alert { flex-direction: column; text-align: center; }
@@ -233,11 +273,18 @@
 </head>
 <body>
 
+    <!-- YENİ EKLENEN MENÜ KISMI -->
     <nav>
-        <div class="logo">Endoria Network</div>
+        <div class="logo">Endoria</div>
+        <ul class="nav-links">
+            <li><a href="#anasayfa">Ana Sayfa</a></li>
+            <li><a href="#alimlar">Yetkili Alımı</a></li>
+            <li><a href="#magaza">Market</a></li>
+            <li><a href="#kurucular">Yönetim</a></li>
+        </ul>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="anasayfa">
         <h1>Endoria Network</h1>
         <p>Aternos altyapısında profesyonel, kesintisiz ve adil bir hayatta kalma deneyimi.</p>
         
@@ -253,8 +300,19 @@
         </div>
     </section>
 
-    <section class="section-container" id="magaza">
-        <h2 class="section-title">Mağaza & <span>Üyelikler</span></h2>
+    <!-- YETKİLİ ALIMI BÖLÜMÜ -->
+    <section class="section-container" id="alimlar" style="padding-bottom: 20px; padding-top: 40px;">
+        <div class="info-alert hiring-alert">
+            <i class="fa-solid fa-bullhorn"></i>
+            <div>
+                <strong>Yetkili Alımları Açılmıştır!</strong> <br>
+                Sunucumuzda Rehber, Moderatör veya Mimar kadrosunda yer almak istiyorsan, Discord sunucumuza katılarak <b>yetkili alım</b> kanalından başvurunu yapabilirsin. Ekibimize katıl!
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container" id="magaza" style="padding-top: 40px;">
+        <h2 class="section-title">Genel <span>Market</span></h2>
         
         <div class="info-alert">
             <i class="fa-solid fa-circle-info"></i>
@@ -265,20 +323,21 @@
         </div>
 
         <div class="cards-container">
+            <!-- YENİ FİYATLAR VE İSİM GÜNCELLEMESİ -->
             <div class="card store-card">
                 <i class="fa-solid fa-crown"></i>
                 <h3>VIP Üyelik</h3>
-                <p class="price">100 ₺</p>
+                <p class="price">50 ₺</p>
             </div>
             <div class="card store-card">
                 <i class="fa-solid fa-star"></i>
-                <h3>Efso Kasa Anahtarı</h3>
-                <p class="price">150 ₺</p>
+                <h3>Efsane Kasa Anahtarı</h3>
+                <p class="price">100 ₺</p>
             </div>
             <div class="card store-card kadim">
                 <i class="fa-solid fa-dragon"></i>
                 <h3>Endoria Kadim Kasası</h3>
-                <p class="price">250 ₺</p>
+                <p class="price">150 ₺</p>
             </div>
         </div>
     </section>
@@ -286,16 +345,15 @@
     <section class="section-container" id="kurucular">
         <h2 class="section-title">Yönetim <span>Ekibi</span></h2>
         <div class="cards-container">
+            <!-- GERÇEK İSİMLER KALDIRILDI -->
             <div class="card founder-card">
                 <i class="fa-solid fa-shield-halved"></i>
                 <h3>Zeltron</h3>
-                <p class="real-name">Recep</p>
                 <p class="role">Sunucu Kurucusu</p>
             </div>
             <div class="card founder-card">
                 <i class="fa-solid fa-shield-halved"></i>
                 <h3>Zyven</h3>
-                <p class="real-name">Oğuzhan</p>
                 <p class="role">Sunucu Kurucusu</p>
             </div>
         </div>
@@ -333,4 +391,5 @@
         }
     </script>
 </body>
-</html>
+                </html>
+                
